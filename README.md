@@ -42,5 +42,6 @@ To build a fully functional, visually appealing quiz app that allows users to an
 **##screenshorts**
 
 ![image alt](https://github.com/udaykumarganji/Interactive-Quiz-/blob/380aafcd93d0973874f0ab8d7e1d615ff31e02eb/1st.jpg)
-
+![image alt](https://github.com/udaykumarganji/Interactive-Quiz-/blob/95b4385f097f0acbe35eac4feba9eb3a717e5dc1/2nd.jpg)
+![image alt](https://github.com/udaykumarganji/Interactive-Quiz-/blob/95b4385f097f0acbe35eac4feba9eb3a717e5dc1/3rd.jpg)
 
