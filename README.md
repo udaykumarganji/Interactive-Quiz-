@@ -39,6 +39,8 @@ To build a fully functional, visually appealing quiz app that allows users to an
 - Enhanced styling through **CSS transitions**, **hover effects**, and **media queries**.  
 - Strengthened understanding of **state management** within JavaScript applications.
 
+**##screenshorts**
 
+![image alt](https://github.com/udaykumarganji/Interactive-Quiz-/blob/380aafcd93d0973874f0ab8d7e1d615ff31e02eb/1st.jpg)
 
 
