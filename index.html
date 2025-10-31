@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz App - ApexPlanet Task-3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen active">
+            <div class="welcome-card">
+                <div class="logo">🧠</div>
+                <h1>Interactive Quiz App</h1>
+                <p>Test your knowledge with our challenging questions!</p>
+                <div class="quiz-info">
+                    <div class="info-item">
+                        <span class="icon">📊</span>
+                        <span id="total-questions">10</span> Questions
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">⏱️</span>
+                        <span>10s</span> per Question
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">🏆</span>
+                        <span id="best-score">0</span> Best Score
+                    </div>
+                </div>
+                <button id="start-btn" class="btn btn-primary">
+                    <span>Start Quiz</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="screen">
+            <div class="quiz-header">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                    <span id="progress-text">Question 1 of 10</span>
+                </div>
+                <div class="quiz-stats">
+                    <div class="stat">
+                        <span class="stat-label">Score:</span>
+                        <span id="current-score">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Time:</span>
+                        <span id="timer">10</span>s
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-number">Question <span id="question-number">1</span></div>
+                <h2 id="question-text">Loading question...</h2>
+                <div id="options-container" class="options-container">
+                    <!-- Options will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="quiz-controls">
+                <button id="next-btn" class="btn btn-secondary" disabled>
+                    Next Question
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="screen">
+            <div class="results-card">
+                <div class="results-header">
+                    <div class="trophy">🏆</div>
+                    <h2>Quiz Complete!</h2>
+                </div>
+                
+                <div class="score-display">
+                    <div class="final-score">
+                        <span class="score-number" id="final-score">0</span>
+                        <span class="score-total">/ 10</span>
+                    </div>
+                    <div class="score-percentage">
+                        <span id="score-percentage">0%</span> Accuracy
+                    </div>
+                </div>
+
+                <div class="performance-message">
+                    <div id="performance-msg">Great job!</div>
+                </div>
+
+                <div class="stats-breakdown">
+                    <div class="stat-item">
+                        <span class="stat-icon">✅</span>
+                        <span>Correct:</span>
+                        <span id="correct-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">❌</span>
+                        <span>Incorrect:</span>
+                        <span id="incorrect-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">⏱️</span>
+                        <span>Avg Time:</span>
+                        <span id="avg-time">0s</span>
+                    </div>
+                </div>
+
+                <div class="achievements" id="achievements">
+                    <!-- Achievements will be populated by JavaScript -->
+                </div>
+
+                <div class="results-actions">
+                    <button id="restart-btn" class="btn btn-primary">
+                        <span>Play Again</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                    <button id="review-btn" class="btn btn-secondary">
+                        Review Answers
+                    </button>
+                </div>
+
+                <div class="best-score-notice" id="best-score-notice">
+                    🎉 New Best Score!
+                </div>
+            </div>
+        </div>
+
+        <!-- Answer Review Screen -->
+        <div id="review-screen" class="screen">
+            <div class="review-header">
+                <h2>Answer Review</h2>
+                <button id="back-to-results" class="btn btn-ghost">← Back to Results</button>
+            </div>
+            
+            <div id="review-container" class="review-container">
+                <!-- Review questions will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Sound Effects -->
+    <audio id="correct-sound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmEZBz+U2vPZfC0FJHfH8N2QQAoUXrTp66hVFApGn+DyvmEZBz+U2vPZfC0FJHfH8N2QQAoUXrTp66hVFApGn+DyvmEZB" type="audio/wav">
+    </audio>
+    
+    <audio id="wrong-sound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmEZBz+U2vPZfC0FJHfH8N2QQAoUXrTp66hVFApGn+DyvmEZ" type="audio/wav">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
